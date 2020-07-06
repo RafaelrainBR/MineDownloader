@@ -37,16 +37,20 @@ public class Downloader {
     }
 
     public void addToQueue(String uri, int times) throws MalformedURLException {
+        addToQueue(new URL(uri), times);
+    }
+
+    public void addToQueue(URL url, int times) {
         int i = 0;
 
-        while (i < times){
-            urlQueue.add(new URL(uri));
+        while (i < times) {
+            urlQueue.add(url);
             i++;
         }
     }
 
-    private void update(){
-        if(urlQueue.isEmpty()) return;
+    private void update() {
+        if (urlQueue.isEmpty()) return;
 
         URL url = urlQueue.poll();
         File file = new File(folder, "Download-" + id++);

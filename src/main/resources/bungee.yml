@@ -1,0 +1,3 @@
+name: Downloader
+version: ${project.version}
+main: com.rafaelrain.downloader.bungeecord.BungeePlugin

@@ -1,6 +1,6 @@
 name: Downloader
 version: ${project.version}
-main: com.rafaelrain.downloader.spigot.MainClass
+main: com.rafaelrain.downloader.spigot.SpigotPlugin
 commands:
   download:
     description: Baixe diversos arquivos de uma vez sem travar a main-thread
