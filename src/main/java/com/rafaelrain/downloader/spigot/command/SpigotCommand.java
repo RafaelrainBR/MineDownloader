@@ -19,19 +19,16 @@ public class SpigotCommand implements CommandExecutor {
 
         int times = 1;
 
-
         if(args.length == 2){
             if (NumberUtils.isNumber(args[1])) {
                 times = Integer.parseInt(args[1]);
             } else return false;
         }
-
         try {
             downloader.addToQueue(args[0], times);
         } catch (MalformedURLException e) {
             sender.sendMessage("Erro ao tentar ler como url, tente novamente.");
         }
-
         return true;
     }
 }
