@@ -1,0 +1,8 @@
+name: Downloader
+version: ${project.version}
+main: com.rafaelrain.downloader.spigot.MainClass
+commands:
+  download:
+    description: Baixe diversos arquivos de uma vez sem travar a main-thread
+    permission: download.use
+    usage: /download <url> [<times>]
