@@ -10,29 +10,30 @@ import java.net.URL;
 import java.util.Queue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Downloader {
 
-    private final ForkJoinPool pool = new ForkJoinPool(50);
+    private final ForkJoinPool pool = new ForkJoinPool(5000);
+
     private final Queue<URL> urlQueue = Queues.newConcurrentLinkedQueue();
+    private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
     private final File folder;
 
     private int id = 0;
 
-    public Downloader(File folder){
+    public Downloader(File folder) {
         this.folder = folder;
         if(!folder.exists()) folder.mkdir();
 
-        Executors
-                .newSingleThreadScheduledExecutor()
-                .scheduleWithFixedDelay(
-                        this::update,
-                        0,
-                        3,
-                        TimeUnit.SECONDS
-                );
+        executor.scheduleWithFixedDelay(
+                this::update,
+                0,
+                10,
+                TimeUnit.MILLISECONDS
+        );
 
     }
 
@@ -69,5 +70,11 @@ public class Downloader {
                 e.printStackTrace();
             }
         });
+    }
+
+    public void disable() {
+        executor.shutdown();
+
+        pool.shutdown();
     }
 }

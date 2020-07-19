@@ -1,0 +1,13 @@
+[
+    {
+        "modid": "downloader",
+        "name": "Java Downloader",
+        "version": "1.0-SNAPSHOT",
+        "dependencies": [
+            "spongeapi@7.2.0"
+        ],
+        "requiredMods": [
+            "spongeapi@7.2.0"
+        ]
+    }
+]

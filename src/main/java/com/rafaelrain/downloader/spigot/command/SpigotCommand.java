@@ -1,17 +1,17 @@
 package com.rafaelrain.downloader.spigot.command;
 
 import com.rafaelrain.downloader.core.Downloader;
+import com.rafaelrain.downloader.spigot.SpigotPlugin;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.io.File;
 import java.net.MalformedURLException;
 
 public class SpigotCommand implements CommandExecutor {
 
-    private final Downloader downloader = new Downloader(new File("downloads"));
+    private final Downloader downloader = SpigotPlugin.getPlugin(SpigotPlugin.class).getDownloader();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

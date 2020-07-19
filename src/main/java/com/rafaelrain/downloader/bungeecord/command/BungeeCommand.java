@@ -1,17 +1,17 @@
 package com.rafaelrain.downloader.bungeecord.command;
 
+import com.rafaelrain.downloader.bungeecord.BungeePlugin;
 import com.rafaelrain.downloader.core.Downloader;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
 import org.apache.commons.lang.math.NumberUtils;
 
-import java.io.File;
 import java.net.MalformedURLException;
 
 public class BungeeCommand extends Command {
 
-    private final Downloader downloader = new Downloader(new File("downloads"));
+    private final Downloader downloader = BungeePlugin.getInstance().getDownloader();
 
     public BungeeCommand() {
         super("download", "download.use", "downloadFiles");
